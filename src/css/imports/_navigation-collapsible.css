@@ -1,0 +1,138 @@
+/* NAV WRAPPER */
+/* <nav> element that wraps our navigation. */
+
+.nav-collapsible {
+
+  position: relative;
+  overflow: hidden; /* [1] */
+  display: block;
+
+  @media (--breakpoint-not-small) {
+    display: flex;
+  }
+
+}
+
+/* Class added via JS when toggled open */
+.nav-collapsible_open {
+  overflow: visible; /* allow dropdown to be seen */
+}
+
+/*  NAV LIST */
+.nav-collapsible ul {
+  background-color: var(--black);
+
+  /* Remove background */
+  @media (--breakpoint-not-small) {
+    background: none;
+  }
+
+}
+
+/* Hide nav by default only when JS is running and viewport is less than 40em */
+/* The wrapper has 'overflow: hidden;' which hides it. */
+.js .nav-collapsible ul {
+  @media (--breakpoint-small) {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+  }
+}
+
+/* NAV LIST ITEMS */
+
+.nav-collapsible ul li {
+  border-top: 1px solid #000;
+
+  /* Change from stacked to display in a row */
+  @media (--breakpoint-not-small) {
+    display: inline-block;
+    border-top: none; /* separator no longer needed */
+  }
+
+}
+
+.nav-collapsible ul li > a {
+
+  @media (--breakpoint-small) {
+    color: var(--white);
+    display: block;
+    white-space: nowrap;
+    padding-left: var(--spacing-medium);
+    padding-right: var(--spacing-medium);
+    line-height: var(--spacing-large);
+  }
+
+}
+
+.nav-collapsible ul .nav_current > a {
+  @media (--breakpoint-small) {
+    background-color: var(--primary);
+  }
+}
+
+/* make room for toggle button */
+/* override `display: block` on logo wrap link */
+.nav-collapsible > a[href="/"] {
+  @media (--breakpoint-small) {
+    display: inline-block;
+  }
+}
+
+/* TOGGLE BUTTON */
+/* <a> element inserted via JavaScript which toggles the nav. */
+.nav-collapsible_toggle {
+
+  color: var(--white);
+  display: block;
+  white-space: nowrap;
+  padding-right: 1.33335rem;
+  padding-left: 1.33335rem;
+  line-height: 2.66667;
+
+  float: right;
+  margin-top: .25rem;
+  margin-right: .375rem;
+  background: var(--primary);
+  min-width: 2.66667rem;
+  min-height: 2.66667rem;
+  border-radius: .25rem;
+  box-sizing: border-box;
+  /* background-image is inserted with javaScript, see: `app.js` */
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 2;
+
+
+
+  /* Now hide the toggle button as menu show by default */
+  @media (--breakpoint-not-small) {
+    display: none;
+  }
+
+}
+
+.nav-collapsible_toggle [class^="menu-icon-"] {
+  transition: all .25s ease-in;
+}
+
+.nav-collapsible_toggle .menu-icon-close {
+  opacity: 0;
+  background-size: 20%;
+  /* background-image is inserted with javaScript, see: `app.js` */
+}
+
+/* Menu open styles */
+/* Change hamburger icon to a close icon */
+.nav-collapsible_open .menu-icon-open {
+  opacity: 0;
+}
+
+/* Change hamburger icon to a close icon */
+.nav-collapsible_open .menu-icon-close {
+  background-size: 33.33335%;
+  opacity: 1;
+}
+
+
