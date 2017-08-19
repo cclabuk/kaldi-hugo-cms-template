@@ -29,7 +29,7 @@
 
 }
 
-/* Hide nav by default only when JS is running and viewport is less than */
+/* Hide nav by default only when JS is running and viewport is less than 40em, see also: custom media-query in `_media-queries.css` */
 /* The wrapper has 'overflow: hidden;' which hides it. */
 .js .nav-collapsible ul {
   @media (--breakpoint-small) {
