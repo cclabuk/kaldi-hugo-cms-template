@@ -29,7 +29,7 @@
 
 }
 
-/* Hide nav by default only when JS is running and viewport is less than 40em */
+/* Hide nav by default only when JS is running and viewport is less than */
 /* The wrapper has 'overflow: hidden;' which hides it. */
 .js .nav-collapsible ul {
   @media (--breakpoint-small) {
@@ -81,11 +81,11 @@
 }
 
 /* TOGGLE BUTTON */
-/* <a> element inserted via JavaScript which toggles the nav. */
+/* button element which toggles the nav. */
 .nav-collapsible_toggle {
 
+  display: none;
   color: var(--white);
-  display: block;
   white-space: nowrap;
   padding-right: 1.33335rem;
   padding-left: 1.33335rem;
@@ -99,28 +99,43 @@
   min-height: 2.66667rem;
   border-radius: .25rem;
   box-sizing: border-box;
-  /* background-image is inserted with javaScript, see: `app.js` */
   background-repeat: no-repeat;
   background-position: center center;
+  position: relative;
   z-index: 2;
 
 
+}
+
+.js .nav-collapsible_toggle {
+  /* only show button if and when javaScript has kicked in, see also: `src/js/nav-collapsible.js` */
+  display: block;
 
   /* Now hide the toggle button as menu show by default */
   @media (--breakpoint-not-small) {
     display: none;
   }
-
 }
 
-.nav-collapsible_toggle [class^="menu-icon-"] {
-  transition: all .25s ease-in;
+.nav-collapsible .menu-icon-open {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Crect fill='white' width='16' height='2'/%3E%3Crect fill='white' y='5' width='16' height='2'/%3E%3Crect fill='white' y='10' width='16' height='2'/%3E%3C/svg%3E");
 }
 
 .nav-collapsible_toggle .menu-icon-close {
-  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12px' height='12px' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M1.562,0.046l4.336,4.426l4.336-4.426l1.461,1.506L7.381,5.955l4.313,4.403l-1.483,1.504L5.897,7.46l-4.313,4.402 l-1.482-1.504l4.313-4.403L0.102,1.552L1.562,0.046z'/%3E%3C/svg%3E");
   background-size: 20%;
-  /* background-image is inserted with javaScript, see: `app.js` */
+  opacity: 0;
+}
+
+.nav-collapsible_toggle [class^="menu-icon-"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom:0;
+  left:0;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all .25s ease-in;
 }
 
 /* Menu open styles */
@@ -133,6 +148,4 @@
 .nav-collapsible_open .menu-icon-close {
   background-size: 33.33335%;
   opacity: 1;
-}
-
-
+} 
