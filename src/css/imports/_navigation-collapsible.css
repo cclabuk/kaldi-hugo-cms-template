@@ -3,9 +3,14 @@
 
 .nav-collapsible {
 
-  position: relative;
+  position: fixed;
   overflow: hidden; /* [1] */
   display: block;
+  width: 100%;
+  top: 0;
+  z-index:150;
+  margin-bottom: -80px;
+  box-shadow: 0 2px 3px rgba(0,0,0,.4);
 
   @media (--breakpoint-not-small) {
     display: flex;
