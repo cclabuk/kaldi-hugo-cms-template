@@ -4,6 +4,9 @@ export function nav() {
   // http://jsfiddle.net/csswizardry/ev598/
   // http://jsfiddle.net/shanomurphy/zp376/
   // https://codepen.io/atelierbram/pen/ALzCs
+  // 
+  // HIDE THE NAV BAR
+  // https://codepen.io/pirrera/pen/rayoLW/
 
   /* The target nav */
   var responsiveNav = document.getElementById('js-nav-collapsible'); 
@@ -17,24 +20,11 @@ export function nav() {
   /* Toggle Class Function */
   function toggleClass(e,t){var n=' '+e.className.replace(/[\t\r\n]/g,' ')+' ';if(hasClass(e,t)){while(n.indexOf(' '+t+' ')>=0){n=n.replace(' '+t+' ',' ')}e.className=n.replace(/^\s+|\s+$/g,'')}else{e.className+=' '+t}}
 
-  /* Toggle 'nav-collapsible_open' when button is clicked */
-  toggleBtn.onclick = function() {
-    toggleClass(this.parentNode, 'nav-collapsible_open');
-  }
+  /* Removes a class attribute if defined */
+  function removeClass(e,t){var n=' '+e.className.replace(/[\t\r\n]/g,' ')+' ';if(hasClass(e,t)){while(n.indexOf(' '+t+' ')>=0){n=n.replace(' '+t+' ',' ')}e.className=n.replace(/^\s+|\s+$/g,'')}}
 
-  /* Add a class of 'js' to the HTML element */
-  var root = document.documentElement;
-  root.className = root.className + ' js';
-
-}
-nav();
-
-export function hide(document, window, index) {
-    'use strict';
-
-    var elSelector = '.nav-collapsible',
-        element = document.querySelector(elSelector);
-
+  /* Hide an element unless scrolled to the top or bottom */
+  function hide(element) {
     if (!element) return true;
 
     var elHeight = 0,
@@ -56,8 +46,10 @@ export function hide(document, window, index) {
         if (wScrollCurrent <= 0)
             element.style.top = '0px';
 
-        else if (wScrollDiff > 0)
+        else if (wScrollDiff > 0) {
             element.style.top = (elTop > 0 ? 0 : elTop) + 'px';
+            removeClass(element,'nav-collapsible_open');
+        }
 
         else if (wScrollDiff < 0) {
             if (wScrollCurrent + wHeight >= dHeight - elHeight)
@@ -65,10 +57,31 @@ export function hide(document, window, index) {
 
             else
                 element.style.top = (Math.abs(elTop) > elHeight ? -elHeight : elTop) + 'px';
+
+            removeClass(element,'nav-collapsible_open');
         }
 
         wScrollBefore = wScrollCurrent;
     });
 
+  }
+
+  /* Toggle 'nav-collapsible_open' when button is clicked */
+  toggleBtn.onclick = function() {
+  }
+
+  /* Toggle 'nav-collapsible_open' when button is clicked */
+  toggleBtn.onclick = function() {
+    toggleClass(this.parentNode, 'nav-collapsible_open');
+  }
+
+  /* Enable hiding the navigation bar */
+  hide(responsiveNav);
+
+  /* Add a class of 'js' to the HTML element */
+  var root = document.documentElement;
+  root.className = root.className + ' js';
+
 }
-hide(document, window, 0);
+nav();
+
