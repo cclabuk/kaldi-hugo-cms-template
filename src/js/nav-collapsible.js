@@ -21,7 +21,7 @@ export function nav() {
   function toggleClass(e,t){var n=' '+e.className.replace(/[\t\r\n]/g,' ')+' ';if(hasClass(e,t)){while(n.indexOf(' '+t+' ')>=0){n=n.replace(' '+t+' ',' ')}e.className=n.replace(/^\s+|\s+$/g,'')}else{e.className+=' '+t}}
 
   /* Removes a class attribute if defined */
-  function removeClass(e,t){var n=' '+e.className.replace(/[\t\r\n]/g,' ')+' ';if(hasClass(e,t)){while(n.indexOf(' '+t+' ')>=0){n=n.replace(' '+t+' ',' ')}e.className=n.replace(/^\s+|\s+$/g,'')}}
+  function removeClass(e,t){if(hasClass(e,t)){var n=' '+e.className.replace(/[\t\r\n]/g,' ')+' ';while(n.indexOf(t)>=0){n=n.replace(' '+t+' ',' ')}e.className=n.trim();}}
 
   /* Hide an element unless scrolled to the top or bottom */
   function hide(element) {
