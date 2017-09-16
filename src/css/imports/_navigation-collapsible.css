@@ -47,6 +47,14 @@
   }
 }
 
+/* Animation to slide the navbar down */
+.js .nav-collapsible_show {
+    -webkit-transition:top 200ms ease;
+    -moz-transition:top 200ms ease;
+    -o-transition:top 200ms ease;
+    transition:top 200ms ease;
+}
+
 /* NAV LIST ITEMS */
 
 .nav-collapsible ul li {
