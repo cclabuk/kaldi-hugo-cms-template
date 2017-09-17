@@ -3,19 +3,16 @@
 
 .nav-collapsible {
 
-  position: fixed;
   overflow: hidden; /* [1] */
   display: block;
-  width: 100%;
-  height:55px;
+  height:3.25rem;
   top: 0;
   z-index:150;
-  margin-bottom: -80px;
   box-shadow: 0 2px 3px rgba(0,0,0,.4);
 
   @media (--breakpoint-not-small) {
     display: flex;
-    height: 79px;
+    height: 3.66667rem;
   }
 
 }

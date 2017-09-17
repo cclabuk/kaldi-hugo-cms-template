@@ -11,6 +11,12 @@ export function nav() {
   /* The target nav */
   var responsiveNav = document.getElementById('js-nav-collapsible'); 
 
+  /* The document */
+  var root = document.documentElement;
+
+  /* Move the root down by the height of the nav bar */
+  root.style.marginTop =  responsiveNav.offsetHeight.toString() + "px";
+
   /* The toggle button */
   var toggleBtn = document.getElementById('navCollapsibleToggle');
 
@@ -97,9 +103,7 @@ export function nav() {
   hide(responsiveNav);
 
   /* Add a class of 'js' to the HTML element */
-  var root = document.documentElement;
   root.className = root.className + ' js';
-
 }
 nav();
 
